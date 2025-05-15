@@ -1,0 +1,17 @@
+{% extends "me/layout.html" %}
+{% load static %}
+
+{% block body %}
+    <h1>My Projects</h1>
+    <div>
+        {% for project in projects %}
+            <div style="border:1px solid #ccc; padding:10px; margin-bottom:20px;">
+                <h2>{{ project.title }}</h2>
+                <img src="{{ project.image_url }}" alt="{{ project.title }}" style="width:200px;">
+                <p><strong>Skill:</strong> {{ project.skill.name }}</p>
+                <p>{{ project.description }}</p>
+                <a href="{{ project.visit_link }}" target="_blank">Visit Project</a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
