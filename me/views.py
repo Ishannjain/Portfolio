@@ -8,7 +8,13 @@ def index(request):
 
 def projects_view(request):
     projects = Project.objects.all()
-    return render(request, 'me/projects.html', {'projects': projects})
-def skills_view(request):
-    skills= Skill.objects.all()
-    return render(request, 'me/skills.html', {'skills':skills})
+    skills = Skill.objects.prefetch_related('project_set')
+    return render(request, 'me/projects.html', {
+        'projects': projects,
+        'skills':skills
+        })
+def about_view(request):
+    ProfessionalSkills = ProfessionalSkill.objects.all()
+    return render(request, 'me/about.html', {
+        'skills': ProfessionalSkills
+        })

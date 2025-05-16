@@ -1,4 +1,10 @@
 from django.contrib import admin
 from .models import *
-admin.site.register(Skill)
+@admin.register(Skill)
+class SkillAdmin(admin.ModelAdmin):
+    list_display = ('name', 'level')
+
 admin.site.register(Project)
+@admin.register(ProfessionalSkill)
+class ProfessionalSkillAdmin(admin.ModelAdmin):
+    list_display = ('name', 'level')

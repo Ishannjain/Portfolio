@@ -2,16 +2,32 @@
 {% load static %}
 
 {% block body %}
-    <h1>My Projects</h1>
-    <div>
-        {% for project in projects %}
-            <div style="border:1px solid #ccc; padding:10px; margin-bottom:20px;">
-                <h2>{{ project.title }}</h2>
-                <img src="{{ project.image_url }}" alt="{{ project.title }}" style="width:200px;">
-                <p><strong>Skill:</strong> {{ project.skill.name }}</p>
-                <p>{{ project.description }}</p>
-                <a href="{{ project.visit_link }}" target="_blank">Visit Project</a>
-            </div>
-        {% endfor %}
+<h1>My Skills</h1>
+
+{% for skill in skills %}
+  <div class="mb-5">
+    <h2>{{ skill.name }}</h2>
+    <div class="progress mb-3">
+      <div class="progress-bar" role="progressbar"
+           style="width: {{ skill.level }}%;">
+         {{ skill.level }}%
+      </div>
     </div>
+<h1>My Projects</h1>
+    {% if skill.project_set.all %}
+      <h4>{{ skill.name }}:</h4>
+      {% for project in skill.project_set.all %}
+        <div style="border:1px solid #ccc; padding:10px; margin-bottom:10px;">
+          <h5>{{ project.title }}</h5>
+          <img src="{{ project.image_url }}" alt="{{ project.title }}" style="width:200px;">
+          <p>{{ project.description }}</p>
+          <a href="{{ project.visit_link }}" target="_blank">Visit Project</a>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p>No projects yet for this skill.</p>
+    {% endif %}
+  </div>
+{% endfor %}
+
 {% endblock %}
