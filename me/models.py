@@ -27,3 +27,14 @@ class ProfessionalSkill(models.Model):
 
     def __str__(self):
         return f"{self.name} ({self.level}%)"
+class Hobby(models.Model):
+    name=models.CharField(max_length=100)
+    def __str__(self):
+        return f"{self.name}"
+class Certificates(models.Model):
+    name=models.CharField(max_length=1000)
+    issued_by=models.CharField(max_length=1000)
+    issued_date=models.DateField()
+    def __str__(self):
+        return f"{self.name}"
+    

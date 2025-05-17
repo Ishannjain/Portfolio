@@ -35,16 +35,27 @@ h1 {
   padding: 1rem;
   margin: 0;
 }
-
-.nav {
-  background-color: var(--bg-secondary);
-  padding: 1rem;
-  margin: 0;
-  list-style: none;
+.navbar-custom {
   display: flex;
-  justify-content: center;
-  gap: 2rem;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--bg-secondary);
+  padding: 1rem 2rem;
   border-bottom: 1px solid var(--accent-color);
+}
+
+.nav-title {
+  color: var(--accent-color);
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-link {
@@ -56,8 +67,9 @@ h1 {
 
 .nav-link:hover {
   color: var(--accent-color);
-  text-decoration: none;
+  border-bottom: 1px solid var(--accent-color);
 }
+
 
 footer {
   background-color: var(--bg-secondary);
@@ -102,21 +114,20 @@ footer svg {
 .icon-link:hover {
   color: var(--accent-color);
 }
+
 </style>
 <body>
-    <h1>Ishan Jain</h1>
-    <ul class="nav">
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'index' %}">Home</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'projects' %}">Project</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'about' %}">About</a>
-        </li>
-    </ul>
-
+    
+    <nav class="navbar-custom">
+  <div class="nav-title">Ishan Jain</div>
+  <ul class="nav-links">
+    <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Home</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'projects' %}">Project</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">Games</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">Facts</a></li>
+  </ul>
+</nav>
     <!-- BODY BLOCK HERE -->
     <!-- <div class="container mt-4"> -->
         {% block body %}

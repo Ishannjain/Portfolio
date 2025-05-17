@@ -222,6 +222,7 @@ svg {
     transform: translateX(100%);
   }
 }
+
 </style>
 
 <div>
@@ -234,9 +235,12 @@ svg {
         <h2>I'm a <span class="web-designer">Web Designer</span></h2>
         <p>
           I'm a web designer with extensive experience for over 1 years. 
-          My expertise is to create and website design, graphic design, and many more...
+          My expertise is to create and website design, graphic design.
         </p>
-        <button class="btn">Contact Me</button>
+        <a href="{% static 'me/resume.pdf\Ishan.pdf' %}" download class="btn btn-primary">
+    Download Resume
+</a>
+
 <p class="logo">
       <!-- LinkedIn -->
       <a href="https://www.linkedin.com/in/ishan-jain-6a719328a/" target="_blank" rel="noopener" class="icon-link">
@@ -295,6 +299,10 @@ svg {
       </div>
     </div>
   {% endfor %}
+  
 </div>
-
+<div class="skills-section">
+  <h3>Hobbies</h3>
+  
+</div>
 {% endblock %}
