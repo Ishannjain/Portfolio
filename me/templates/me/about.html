@@ -71,12 +71,12 @@ body {
 .btn:hover {
   background-color: var(--accent-color-variant);
 }
-
 .profile-photo {
   flex: 1.5;
   display: flex;
   justify-content: center;
   align-items: center;
+  perspective: 1000px; /* Enables 3D transform */
 }
 
 .profile-photo img {
@@ -85,9 +85,28 @@ body {
   height: auto;
   object-fit: cover;
   border-radius: 50%;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
   border: 3px solid var(--accent-color);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4),
+              0 5px 10px rgba(0, 0, 0, 0.2),
+              inset 0 0 10px rgba(255, 255, 255, 0.05);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  transform-style: preserve-3d;
 }
+
+/* Add 3D rotation on hover */
+.profile-photo img:hover {
+  transform: rotateY(15deg) scale(1.05);
+  box-shadow: 0 25px 40px rgba(0, 0, 0, 0.5);
+}
+@keyframes rotateY {
+  0% { transform: rotateY(0deg); }
+  100% { transform: rotateY(180deg); }
+}
+
+.profile-photo img {
+  animation: rotateY 100s infinite linear;
+}
+
 
 @media (max-width: 768px) {
   .hero {
@@ -223,6 +242,40 @@ svg {
   }
 }
 
+/* Hobbies section styling */
+.hobbies-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.hobby-item {
+  background-color: var(--bg-primary);
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.hobby-item:hover {
+  transform: translateY(-5px);
+}
+
+.hobby-name {
+  color: var(--text-primary);
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.no-hobbies {
+  color: var(--text-secondary);
+  text-align: center;
+  grid-column: 1 / -1;
+  padding: 2rem;
+}
+
 </style>
 
 <div>
@@ -303,6 +356,15 @@ svg {
 </div>
 <div class="skills-section">
   <h3>Hobbies</h3>
-  
+  <div class="hobbies-container">
+    {% for hob in hobbies %}
+      <div class="hobby-item">
+        <h4 class="hobby-name">{{ hob.name }}</h4>
+      </div>
+    {% empty %}
+      <p class="no-hobbies">No hobbies found.</p>
+    {% endfor %}
+  </div>
 </div>
+
 {% endblock %}
