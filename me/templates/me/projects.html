@@ -2,19 +2,135 @@
 {% load static %}
 
 {% block body %}
+<style>
+  
+/* Skills section styling */
+.skills-section {
+  padding: 2rem;
+  background-color: var(--bg-secondary);
+  border-radius: 12px;
+  margin: 2rem 1rem;
+}
+
+.skills-section h3 {
+  color: var(--accent-color);
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  position: relative;
+}
+
+.skills-section h3::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: var(--accent-color);
+  border-radius: 2px;
+}
+
+.skill-item {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background-color: var(--bg-primary);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.skill-item:hover {
+  transform: translateY(-5px);
+}
+
+.skill-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.skill-name {
+  color: var(--text-primary);
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.skill-level {
+  color: var(--accent-color);
+  font-weight: bold;
+}
+
+.progress {
+  background-color: var(--bg-secondary);
+  height: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 0;
+}
+
+.progress-bar {
+  background: linear-gradient(90deg, var(--accent-color), var(--success-color));
+  height: 100%;
+  border-radius: 5px;
+  transition: width 1s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0.1) 0%,
+    rgba(255,255,255,0.2) 50%,
+    rgba(255,255,255,0.1) 100%
+  );
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+</style>
+
+</style>
 <h1>My Skills</h1>
 
 {% for skill in skills %}
-  <div class="mb-5">
-    <h2>{{ skill.name }}</h2>
-    <div class="progress mb-3">
-      <div class="progress-bar" role="progressbar"
-           style="width: {{ skill.level }}%;">
-         {{ skill.level }}%
+  <div class="mb-5"  >
+    <div class="skill-item">
+      <div class="skill-header">
+        <h2 class="skill-name">{{ skill.name }}</h2>
+        <span class="skill-level">{{ skill.level }}%</span>
+      </div>
+      <div class="progress">
+        <div class="progress-bar" role="progressbar"
+             style="width: {{ skill.level }}%;"
+             aria-valuenow="{{ skill.level }}"
+             aria-valuemin="0"
+             aria-valuemax="100">
+        </div>
       </div>
     </div>
+    {% endfor %}
+    
 <h1>My Projects</h1>
-    {% if skill.project_set.all %}
+    {% for skill in skills %}
+     {% if skill.project_set.all %}
       <h4>{{ skill.name }}:</h4>
       {% for project in skill.project_set.all %}
         <div style="border:1px solid #ccc; padding:10px; margin-bottom:10px;">
@@ -24,8 +140,6 @@
           <a href="{{ project.visit_link }}" target="_blank">Visit Project</a>
         </div>
       {% endfor %}
-    {% else %}
-      <p>No projects yet for this skill.</p>
     {% endif %}
   </div>
 {% endfor %}

@@ -10,24 +10,81 @@
     <title>{% block title %}IshanJain{% endblock %}</title>
 </head>
 <style>
+:root {
+  --bg-primary: #121212;
+  --bg-secondary: #1e1e1e;
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --accent-color: #bb86fc;
+  --accent-color-variant: #3700b3;
+  --error-color: #cf6679;
+  --success-color: #03dac6;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  color: var(--accent-color);
+  text-align: center;
+  padding: 1rem;
+  margin: 0;
+}
+
+.nav {
+  background-color: var(--bg-secondary);
+  padding: 1rem;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  border-bottom: 1px solid var(--accent-color);
+}
+
+.nav-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
 footer {
-  background-color: #222;
-  color: #eee;
+  background-color: var(--bg-secondary);
+  color: var(--text-secondary);
   text-align: center;
   padding: 20px;
-  font-family: Arial, sans-serif;
+  margin-top: 2rem;
+  border-top: 1px solid var(--accent-color);
+}
+
+.footer-container h3 {
+  color: var(--accent-color);
+  margin-bottom: 1rem;
 }
 
 footer a {
-  color: #f90;
+  color: var(--accent-color);
   text-decoration: none;
   margin: 8px;
   display: inline-flex;
   align-items: center;
+  transition: color 0.3s ease;
 }
 
 footer a:hover {
-  text-decoration: underline;
+  color: var(--success-color);
+  text-decoration: none;
 }
 
 footer svg {
@@ -35,11 +92,19 @@ footer svg {
   vertical-align: middle;
 }
 
+.icon-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  margin-right: 1rem;
+  transition: color 0.3s ease;
+}
 
-
+.icon-link:hover {
+  color: var(--accent-color);
+}
 </style>
 <body>
-    <h1>Portfolio</h1>
+    <h1>Ishan Jain</h1>
     <ul class="nav">
         <li class="nav-item">
             <a class="nav-link" href="{% url 'index' %}">Home</a>
@@ -47,7 +112,6 @@ footer svg {
         <li class="nav-item">
             <a class="nav-link" href="{% url 'projects' %}">Project</a>
         </li>
-       
         <li class="nav-item">
             <a class="nav-link" href="{% url 'about' %}">About</a>
         </li>
@@ -59,32 +123,24 @@ footer svg {
         {% endblock %}
     </div>
     <footer>
-  <div class="footer-container">
-    <h3>Contact Me</h3>
-
-    <!-- Email -->
-    <p>
-      <a href="mailto:jain.ishannuna@gmail.com" class="icon-link">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#f90" viewBox="0 0 24 24">
-          <path d="M12 13.5L0 6V18h24V6l-12 7.5zM12 12L0 4h24L12 12z"/>
-        </svg>
-        jain.ishannuna@gmail.com
-      </a>
-    </p>
-
-    <!-- Phone -->
-    <p>
-      <a href="tel:+916260364148" class="icon-link">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#0f0" viewBox="0 0 24 24">
-          <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21c1.2.48 2.52.73 3.88.73a1 1 0 011 1v3.5a1 1 0 01-1 1C10.07 22 2 13.93 2 3.5a1 1 0 011-1H6.5a1 1 0 011 1c0 1.36.25 2.68.73 3.88a1 1 0 01-.21 1.11l-2.2 2.2z"/>
-        </svg>
-        +91 6260364148
-      </a>
-    </p>
-
-    <!-- Social Media Links -->
-    
-    <p>
+        <div class="footer-container">
+            <h3>Contact Me</h3>
+            <p>
+                <a href="mailto:jain.ishannuna@gmail.com" class="icon-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 13.5L0 6V18h24V6l-12 7.5zM12 12L0 4h24L12 12z"/>
+                    </svg>
+                    jain.ishannuna@gmail.com
+                </a>
+            </p>
+            <p>
+                <a href="tel:+916260364148" class="icon-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21c1.2.48 2.52.73 3.88.73a1 1 0 011 1v3.5a1 1 0 01-1 1C10.07 22 2 13.93 2 3.5a1 1 0 011-1H6.5a1 1 0 011 1c0 1.36.25 2.68.73 3.88a1 1 0 01-.21 1.11l-2.2 2.2z"/>
+                    </svg>
+                    +91 6260364148
+                </a>
+                <p class="logo">
       <!-- LinkedIn -->
       <a href="https://www.linkedin.com/in/ishan-jain-6a719328a/" target="_blank" rel="noopener" class="icon-link">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#0A66C2" viewBox="0 0 24 24">
@@ -109,10 +165,8 @@ footer svg {
         
       </a>
     </p>
-  </div>
-</footer>
-
-
-
+            </p>
+        </div>
+    </footer>
 </body>
 </html>

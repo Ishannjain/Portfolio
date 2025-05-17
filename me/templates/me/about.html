@@ -2,6 +2,228 @@
 {% load static %}
 
 {% block body %}
+<style>
+:root {
+  --bg-primary: #121212;
+  --bg-secondary: #1e1e1e;
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --accent-color: #bb86fc;
+  --accent-color-variant: #3700b3;
+  --error-color: #cf6679;
+  --success-color: #03dac6;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+  gap: 2rem;
+  background-color: var(--bg-secondary);
+  border-radius: 12px;
+  margin: 1rem;
+}
+
+.intro-text {
+  flex: 2;
+}
+
+.intro-text h1 {
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.intro-text h2 {
+  color: var(--accent-color);
+  margin-bottom: 1rem;
+}
+
+.intro-text p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.highlighted {
+  color: var(--accent-color);
+}
+
+.web-designer {
+  color: var(--success-color);
+}
+
+.btn {
+  background-color: var(--accent-color);
+  color: var(--bg-primary);
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: var(--accent-color-variant);
+}
+
+.profile-photo {
+  flex: 1.5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-photo img {
+  max-width: 300px;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  border: 3px solid var(--accent-color);
+}
+
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .profile-photo {
+    order: -1;
+    margin-bottom: 2rem;
+  }
+}
+
+.logo {
+  margin-top: 1.5rem;
+}
+
+.icon-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  margin-right: 1rem;
+  transition: color 0.3s ease;
+}
+
+.icon-link:hover {
+  color: var(--accent-color);
+}
+
+svg {
+  margin-right: 12px;
+  vertical-align: middle;
+}
+
+/* Skills section styling */
+.skills-section {
+  padding: 2rem;
+  background-color: var(--bg-secondary);
+  border-radius: 12px;
+  margin: 2rem 1rem;
+}
+
+.skills-section h3 {
+  color: var(--accent-color);
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  position: relative;
+}
+
+.skills-section h3::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: var(--accent-color);
+  border-radius: 2px;
+}
+
+.skill-item {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background-color: var(--bg-primary);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.skill-item:hover {
+  transform: translateY(-5px);
+}
+
+.skill-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.skill-name {
+  color: var(--text-primary);
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.skill-level {
+  color: var(--accent-color);
+  font-weight: bold;
+}
+
+.progress {
+  background-color: var(--bg-secondary);
+  height: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 0;
+}
+
+.progress-bar {
+  background: linear-gradient(90deg, var(--accent-color), var(--success-color));
+  height: 100%;
+  border-radius: 5px;
+  transition: width 1s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0.1) 0%,
+    rgba(255,255,255,0.2) 50%,
+    rgba(255,255,255,0.1) 100%
+  );
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+</style>
+
 <div>
   
 <!-- Main Content Area -->
@@ -14,21 +236,8 @@
           I'm a web designer with extensive experience for over 1 years. 
           My expertise is to create and website design, graphic design, and many more...
         </p>
-        <button class="btn">More About Me</button>
-      </div>
-
-      <div class="profile-photo">
-       <img src="me.jpg" alt="Ishan jain">
-
-      </div>
-    </section>
-     <!-- Theme Switcher -->
-
-  </main>
-</div>
-<!-- Social Media Links -->
-    
-    <p>
+        <button class="btn">Contact Me</button>
+<p class="logo">
       <!-- LinkedIn -->
       <a href="https://www.linkedin.com/in/ishan-jain-6a719328a/" target="_blank" rel="noopener" class="icon-link">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#0A66C2" viewBox="0 0 24 24">
@@ -53,16 +262,39 @@
         
       </a>
     </p>
-<h3>My Professional Skills</h3>
-{% for skill in skills %}
-  <div class="mb-5">
-    <h2>{{ skill.name }}</h2>
-    <div class="progress mb-3">
-      <div class="progress-bar" role="progressbar"
-           style="width: {{ skill.level }}%;">
-         {{ skill.level }}%
+      </div>
+
+      <div class="profile-photo">
+        <img src="{% static 'me/me.jpg' %}" alt="Ishan Jain" style="max-width: 100%; height: auto; border-radius: 50%; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+      </div>
+    </section>
+     <!-- Theme Switcher -->
+
+  </main>
+</div>
+
+
+<!-- Social Media Links -->
+   
+    
+<div class="skills-section">
+  <h3>My Professional Skills</h3>
+  {% for skill in skills %}
+    <div class="skill-item">
+      <div class="skill-header">
+        <h2 class="skill-name">{{ skill.name }}</h2>
+        <span class="skill-level">{{ skill.level }}%</span>
+      </div>
+      <div class="progress">
+        <div class="progress-bar" role="progressbar"
+             style="width: {{ skill.level }}%;"
+             aria-valuenow="{{ skill.level }}"
+             aria-valuemin="0"
+             aria-valuemax="100">
+        </div>
       </div>
     </div>
-    {% endfor %}
+  {% endfor %}
+</div>
 
 {% endblock %}
