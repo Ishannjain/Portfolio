@@ -10,6 +10,18 @@
     <title>{% block title %}IshanJain{% endblock %}</title>
 </head>
 <style>
+   #character {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100px;
+    animation: moveRight 5s linear infinite;
+  }
+
+  @keyframes moveRight {
+    0% { left: 0; }
+    100% { left: 100%; }
+  }
 :root {
   --bg-primary: #121212;
   --bg-secondary: #1e1e1e;
@@ -27,7 +39,7 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
- background-image: url("{% static 'me/download.jpeg' %}");
+ /* background-image: url("{% static 'me/download.jpeg' %}"); */
     background-size: cover; /* Optional: to make it fit nicely */
     background-repeat: no-repeat;
     background-position: center;
@@ -84,6 +96,10 @@ footer {
   padding: 20px;
   margin-top: 2rem;
   border-top: 1px solid var(--accent-color);
+  display: flex;
+  justify-content: center;
+  flex-direction: column-reverse;
+ 
 }
 
 .footer-container h3 {
@@ -95,7 +111,9 @@ footer a {
   color: var(--accent-color);
   text-decoration: none;
   margin: 8px;
-  display: inline-flex;
+  /* display: inline-flex; */
+  
+  
   align-items: center;
   transition: color 0.3s ease;
 }
@@ -139,6 +157,7 @@ footer svg {
         {% block body %}
         {% endblock %}
     </div>
+    
     <footer>
         <div class="footer-container">
             <h3>Contact Me</h3>

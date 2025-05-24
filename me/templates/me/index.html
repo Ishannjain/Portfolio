@@ -1,0 +1,136 @@
+{% extends "me/layout.html" %}
+{% load static %}
+
+{% block body %}
+<style>
+    
+.orbit-wrapper {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  margin: 4rem auto;
+}
+
+.center-circle {
+  width: 120px;
+  height: 120px;
+  background: #111;
+  color: white;
+  border: 3px solid #0dcaf0;
+  border-radius: 50%;
+  line-height: 120px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1rem; /* adjust here */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+
+/* Orbit ring / path */
+.orbit-path {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  margin-left: -150px;
+  margin-top: -150px;
+  border: 2px dashed #0dcaf0;
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.orbit-circle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  animation: rotateOrbit 20s linear infinite;
+}
+
+.orbit-item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: rotate(calc(360deg / var(--total) * var(--i)))
+             translateX(160px)
+             rotate(calc(-360deg / var(--total) * var(--i)));
+  background: #0dcaf0;
+  color: black;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes rotateOrbit {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.skills-section {
+  padding: 2rem;
+  background-color: var(--bg-secondary, #111);
+  border-radius: 12px;
+  margin-top: 4rem;
+}
+
+.skills-section h3 {
+  color: var(--accent-color, #0dcaf0);
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  position: relative;
+}
+
+.skills-section h3::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: var(--accent-color, #0dcaf0);
+  border-radius: 2px;
+}
+
+</style>
+
+<div class="d-flex">
+<div class="orbit-wrapper">
+  <div class="center-circle">My Skills</div>
+  <div class="orbit-path"></div> <!-- The circular path -->
+  <div class="orbit-circle">
+    {% for s in skills %}
+      <div class="orbit-item" style="--i: {{ forloop.counter0 }}; --total: {{ skills|length }};">
+        {{ s.name }}
+        
+      </div>
+    {% endfor %}
+  </div>
+</div>
+<div class="orbit-wrapper">
+  <div class="center-circle">My Skills</div>
+  <div class="orbit-path"></div> <!-- The circular path -->
+  <div class="orbit-circle">
+    {% for p in pro %}
+      <div class="orbit-item" style="--i: {{ forloop.counter0 }}; --total: {{ skills|length }};">
+        {{ p.name }}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+</div>
+{% endblock %}

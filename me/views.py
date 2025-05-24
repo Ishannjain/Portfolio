@@ -4,7 +4,12 @@ from django.shortcuts import render,redirect, get_object_or_404
 from .models import *
 
 def index(request):
-    return render(request,"me/layout.html")
+    skills=Skill.objects.all()
+    pro=ProfessionalSkill.objects.all()
+    return render(request,"me/index.html",{
+        'skills':skills,
+        'pro':pro
+    })
 
 def projects_view(request):
     projects = Project.objects.all()
