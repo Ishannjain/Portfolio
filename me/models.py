@@ -15,6 +15,7 @@ class Project(models.Model):
     image_url = models.CharField(max_length=10000)
     description = models.TextField()
     visit_link = models.URLField(max_length=10000)
+    tech_stack=models.CharField(max_length=100,null=True, blank=True)
 
 
     def __str__(self):
@@ -35,6 +36,9 @@ class Certificates(models.Model):
     name=models.CharField(max_length=1000)
     issued_by=models.CharField(max_length=1000)
     issued_date=models.DateField()
+    img = models.CharField(max_length=1000, null=True, blank=True)
+
+    note=models.CharField(max_length=1000,null=True,blank=True)
     def __str__(self):
         return f"{self.name}"
     

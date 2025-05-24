@@ -181,6 +181,7 @@ h1, h2, h3, h4 {
               <div class="card-body d-flex flex-column">
                 <h5 class="card-title">{{ project.title }}</h5>
                 <p class="card-text">{{ project.description }}</p>
+                <p class="card-text">Tech_stack:{{ project.tech_stack}}</p>
                 <a href="{{ project.visit_link }}" target="_blank" class="btn btn-outline-light mt-auto">Visit Project</a>
               </div>
             </div>
@@ -192,14 +193,18 @@ h1, h2, h3, h4 {
 
   <h1 class="mb-4">Certificates</h1>
   {% for cer in Certificatess %}
-          <div class="card  bg-dark text-white h-100 card-hover card-animate" style="width: 18rem;">
-  <ul class="list-group list-group-flush bg-dark text-white h-100 card-hover card-animate">
-    <li class="list-group-item bg-dark text-white h-100 card-hover card-animate">{{cer.name}}</li>
-    <li class="list-group-item bg-dark text-white h-100 card-hover card-animate">{{cer.issued_by}}</li>
-    <li class="list-group-item bg-dark text-white h-100 card-hover card-animate ">{{cer.issued_date}}</li>
-  </ul>
-  
-</div>
+         <div class="col-md-4">
+            <div class="card bg-dark text-white h-100 card-hover card-animate">
+              <img src="{{ cer.img }}" class="card-img-top border-bottom">
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title">{{ cer.name}}</h5>
+                <p class="card-text">{{ cer.issued_by }}</p>
+                <p class="card-text">{{ cer.issued_date}}</p>
+                <p class="card-text">{{ cer.note}}</p>
+               
+              </div>
+            </div>
+          </div>
         {% endfor %}
 
 </div>
