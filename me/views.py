@@ -16,7 +16,9 @@ def projects_view(request):
     skills = Skill.objects.prefetch_related('project_set')
     hobbies=Hobby.objects.all()
     Certificatess=Certificates.objects.all()
+    ProfessionalSkills = ProfessionalSkill.objects.all()
     return render(request, 'me/projects.html', {
+       'proskills': ProfessionalSkills,
         'projects': projects,
         'skills':skills,
         'hobbies':hobbies,
@@ -26,6 +28,6 @@ def about_view(request):
     ProfessionalSkills = ProfessionalSkill.objects.all()
     hobbies = Hobby.objects.all()
     return render(request, 'me/about.html', {
-        'skills': ProfessionalSkills,
+        'proskills': ProfessionalSkills,
         'hobbies': hobbies
     })

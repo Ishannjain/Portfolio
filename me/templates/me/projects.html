@@ -3,7 +3,7 @@
 
 {% block body %}
 <style>
-/* Full background */
+/* General layout */
 body {
   background-color: #000;
   color: #fff;
@@ -11,28 +11,34 @@ body {
   padding: 0;
 }
 
-/* Content container */
 .page-container {
-  /* max-width: 1140px; */
-
   margin: 1rem auto;
   padding: 2rem 1rem;
 }
 
-/* Headings */
+/* Typography */
 h1, h2, h3, h4 {
   color: #fff;
 }
 
-/* Skills section styling */
-.skills-section {
+/* Flex container for skills & pro skills */
+.sku-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+/* Individual skill sections */
+.skills-section, .certificates-section {
+  flex: 1;
   padding: 2rem;
   background-color: var(--bg-secondary, #111);
   border-radius: 12px;
-  margin-top: 4rem;
+  min-width: 300px;
+  height: auto;
 }
 
-.skills-section h3 {
+.skills-section h3, .certificates-section h3 {
   color: var(--accent-color, #0dcaf0);
   font-size: 2rem;
   margin-bottom: 2rem;
@@ -40,7 +46,8 @@ h1, h2, h3, h4 {
   position: relative;
 }
 
-.skills-section h3::after {
+.skills-section h3::after,
+.certificates-section h3::after {
   content: '';
   position: absolute;
   bottom: -10px;
@@ -52,6 +59,7 @@ h1, h2, h3, h4 {
   border-radius: 2px;
 }
 
+/* Skill item box */
 .skill-item {
   margin-bottom: 1rem;
   padding: 1rem;
@@ -60,128 +68,150 @@ h1, h2, h3, h4 {
   box-shadow: 0 2px 4px rgba(0,0,0,0.3);
   transition: transform 0.3s ease;
 }
-
 .skill-item:hover {
   transform: translateY(-5px);
 }
-
 .skill-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.5rem;
 }
-
 .skill-name {
   color: var(--text-primary, #fff);
   font-size: 1.2rem;
   font-weight: bold;
-  margin: 0;
 }
-
 .skill-level {
   color: var(--accent-color, #0dcaf0);
   font-weight: bold;
 }
-
 .progress {
   background-color: var(--bg-secondary, #333);
   height: 10px;
   border-radius: 5px;
   overflow: hidden;
 }
-
 .progress-bar {
   background: linear-gradient(90deg, var(--accent-color, #0dcaf0), var(--success-color, #198754));
   height: 100%;
   border-radius: 5px;
-  transition: width 1s ease-in-out;
   position: relative;
-  overflow: hidden;
 }
-
 .progress-bar::after {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(
-    90deg,
-    rgba(255,255,255,0.1) 0%,
-    rgba(255,255,255,0.2) 50%,
-    rgba(255,255,255,0.1) 100%
-  );
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(90deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.1) 100%);
   animation: shimmer 2s infinite;
 }
-
 @keyframes shimmer {
   0% { transform: translateX(-100%); }
   100% { transform: translateX(100%); }
 }
 
-/* Card animations */
+/* Slide animations */
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+.slide-in-left {
+  animation: slideInLeft 0.7s ease-out forwards;
+}
+.slide-in-right {
+  animation: slideInRight 0.7s ease-out forwards;
+}
+
+/* Cards hover effect */
 .card-hover {
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 .card-hover:hover {
-  transform: scale(1.03);
-  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.15);
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.25);
 }
-
-.card-animate {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.6s ease forwards;
-}
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 </style>
 
 <div class="page-container">
 
-  <h1 class="mb-4">My Skills</h1>
-
-  {% for skill in skills %}
-    <div class="skill-item">
-      <div class="skill-header">
-        <h2 class="skill-name">{{ skill.name }}</h2>
-        <span class="skill-level">{{ skill.level }}%</span>
-      </div>
-      <div class="progress">
-        <div class="progress-bar" role="progressbar"
-             style="width: {{ skill.level }}%;"
-             aria-valuenow="{{ skill.level }}"
-             aria-valuemin="0"
-             aria-valuemax="100">
+  <!-- Flex row for Skills & Pro Skills -->
+  <div class="sku-container">
+    <!-- Skills -->
+    <div class="skills-section">
+      <h3>My Skills</h3>
+      {% for skill in skills %}
+        <div class="skill-item">
+          <div class="skill-header">
+            <h2 class="skill-name">{{ skill.name }}</h2>
+            <span class="skill-level">{{ skill.level }}%</span>
+          </div>
+          <div class="progress">
+            <div class="progress-bar" style="width: {{ skill.level }}%;"
+              aria-valuenow="{{ skill.level }}" aria-valuemin="0" aria-valuemax="100">
+            </div>
+          </div>
         </div>
-      </div>
+      {% endfor %}
     </div>
-  {% endfor %}
 
+    <!-- Professional Skills -->
+    <div class="skills-section">
+      <h3>Professional Skills</h3>
+      {% for skill in proskills %}
+        <div class="skill-item">
+          <div class="skill-header">
+            <h2 class="skill-name">{{ skill.name }}</h2>
+            <span class="skill-level">{{ skill.level }}%</span>
+          </div>
+          <div class="progress">
+            <div class="progress-bar" style="width: {{ skill.level }}%;"
+              aria-valuenow="{{ skill.level }}" aria-valuemin="0" aria-valuemax="100">
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Certificates -->
+  <div class="certificates-section mt-5">
+    <h3>Certificates</h3>
+    <div class="row">
+      {% for cer in Certificatess %}
+        <div class="col-md-4 mb-4">
+          <div class="card bg-dark text-white card-hover slide-in-right h-100">
+            <img src="{{ cer.img }}" class="card-img-top border-bottom">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">{{ cer.name }}</h5>
+              <p class="card-text">{{ cer.issued_by }}</p>
+              <p class="card-text">{{ cer.issued_date }}</p>
+              <p class="card-text">{{ cer.note }}</p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Projects -->
   <h1 class="mt-5 mb-4">My Projects</h1>
-
   {% for skill in skills %}
     {% if skill.project_set.all %}
-    <div class="skills-section mt-5">
-      <h3 class="mt-4">{{ skill.name }}</h3>
-      </div>    
+      <div class="skills-section mt-5">
+        <h3 class="mt-4">{{ skill.name }}</h3>
+      </div>
       <div class="row gy-4">
-
         {% for project in skill.project_set.all %}
           <div class="col-md-4">
-            <div class="card bg-dark text-white h-100 card-hover card-animate">
+            <div class="card bg-dark text-white h-100 card-hover slide-in-left">
               <img src="{{ project.image_url }}" class="card-img-top border-bottom" alt="{{ project.title }}">
               <div class="card-body d-flex flex-column">
                 <h5 class="card-title">{{ project.title }}</h5>
                 <p class="card-text">{{ project.description }}</p>
-                <p class="card-text">Tech_stack:{{ project.tech_stack}}</p>
+                <p class="card-text">Tech_stack: {{ project.tech_stack }}</p>
                 <a href="{{ project.visit_link }}" target="_blank" class="btn btn-outline-light mt-auto">Visit Project</a>
               </div>
             </div>
@@ -190,22 +220,6 @@ h1, h2, h3, h4 {
       </div>
     {% endif %}
   {% endfor %}
-
-  <h1 class="mb-4">Certificates</h1>
-  {% for cer in Certificatess %}
-         <div class="col-md-4">
-            <div class="card bg-dark text-white h-100 card-hover card-animate">
-              <img src="{{ cer.img }}" class="card-img-top border-bottom">
-              <div class="card-body d-flex flex-column">
-                <h5 class="card-title">{{ cer.name}}</h5>
-                <p class="card-text">{{ cer.issued_by }}</p>
-                <p class="card-text">{{ cer.issued_date}}</p>
-                <p class="card-text">{{ cer.note}}</p>
-               
-              </div>
-            </div>
-          </div>
-        {% endfor %}
 
 </div>
 {% endblock %}

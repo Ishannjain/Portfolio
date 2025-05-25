@@ -4,6 +4,77 @@
 {% block body %}
 <style>
     
+.timeline-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 1rem;
+  background-color: #000;
+  color: #fff;
+}
+
+.timeline {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(to right, #dc3545, #ffc107, #0dcaf0, #20c997);
+  z-index: 0;
+}
+
+.timeline-event {
+  position: relative;
+  z-index: 1;
+  width: 100px;
+  text-align: center;
+}
+
+.timeline-event .circle {
+  width: 40px;
+  height: 40px;
+  background-color: #000;
+  border: 4px solid currentColor;
+  border-radius: 50%;
+  margin: 0 auto;
+  line-height: 32px;
+  font-weight: bold;
+  color: inherit;
+}
+
+.timeline-event .desc-box {
+  width: 150px;
+  padding: 0.8rem;
+  border: 2px solid currentColor;
+  border-radius: 8px;
+  background-color: #111;
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.timeline-event:nth-child(even) .desc-box {
+  top: auto;
+  bottom: -120px;
+}
+
+/* Colors for each event */
+.timeline-event:nth-child(1) { color: #dc3545; }   /* Red */
+.timeline-event:nth-child(2) { color: #fd7e14; }   /* Orange */
+.timeline-event:nth-child(3) { color: #ffc107; }   /* Yellow */
+.timeline-event:nth-child(4) { color: #0dcaf0; }   /* Cyan */
+.timeline-event:nth-child(5) { color: #20c997; }   /* Teal */
 .orbit-wrapper {
   position: relative;
   width: 400px;
@@ -319,4 +390,32 @@ svg {
   </div>
 </div>
 </div>
+
+
+<div class="timeline-container">
+  <h2 class="mb-5">My Timeline</h2>
+  <div class="timeline">
+    <div class="timeline-event">
+      <div class="circle">2000</div>
+      <div class="desc-box">Started learning computers</div>
+    </div>
+    <div class="timeline-event">
+      <div class="circle">2001</div>
+      <div class="desc-box">Built my first website</div>
+    </div>
+    <div class="timeline-event">
+      <div class="circle">2002</div>
+      <div class="desc-box">Learned programming</div>
+    </div>
+    <div class="timeline-event">
+      <div class="circle">2003</div>
+      <div class="desc-box">Internship at XYZ</div>
+    </div>
+    <div class="timeline-event">
+      <div class="circle">2004</div>
+      <div class="desc-box">First freelance project</div>
+    </div>
+  </div>
+</div>
+
 {% endblock %}
