@@ -42,3 +42,10 @@ class Certificates(models.Model):
     def __str__(self):
         return f"{self.name}"
     
+class Timeline(models.Model):
+    title=models.CharField(max_length=100)
+    date=models.DateField()
+    image=models.CharField(max_length=10000)
+    
+    def __str__(self):
+        return f"{self.title}"

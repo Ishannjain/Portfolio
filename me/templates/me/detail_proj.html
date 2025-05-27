@@ -1,0 +1,23 @@
+{% extends "me/layout.html" %}
+{% load static %}
+
+{% block body %}
+<div style="max-width: 800px; margin: 0 auto; padding: 20px; color: white;">
+    <h2>{{ project.title }}</h2>
+
+    {% if project.image_url %}
+        <img src="{{ project.image_url }}" alt="{{ project.title }}" style="max-width: 100%; height: auto; margin: 20px 0;">
+    {% endif %}
+
+    <p><strong>Description:</strong></p>
+    <p>{{ project.description }}</p>
+
+    <p><strong>Tech Stack:</strong> {{ project.tech_stack }}</p>
+
+    {% if project.visit_link %}
+        <p><a href="{{ project.visit_link }}" target="_blank" style="color: #0af;">Visit Project ↗</a></p>
+    {% endif %}
+
+    <p><a href="{% url 'projects' %}" style="color: #ccc;">← Back to Projects</a></p>
+</div>
+{% endblock %}

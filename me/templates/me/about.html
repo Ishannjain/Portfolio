@@ -21,32 +21,40 @@ body {
 
 .hero {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: space-between;
-  padding: 2rem;
-  gap: 2rem;
+  padding: 0;
+  gap: 0;
   background-color: var(--bg-secondary);
   border-radius: 12px;
   margin: 1rem;
+  min-height: 80vh;
+  overflow: hidden;
 }
 
 .intro-text {
-  flex: 2;
+  flex: 1;
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .intro-text h1 {
-  color: var(--text-primary);
-  margin-bottom: 1rem;
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
 }
 
 .intro-text h2 {
-  color: var(--accent-color);
-  margin-bottom: 1rem;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .intro-text p {
-  color: var(--text-secondary);
-  line-height: 1.6;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  max-width: 600px;
 }
 
 .highlighted {
@@ -58,86 +66,88 @@ body {
 }
 
 .btn {
-  background-color: var(--accent-color);
-  color: var(--bg-primary);
-  border: none;
-  padding: 0.8rem 1.5rem;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
+  align-self: flex-start;
+  font-size: 1.1rem;
+  padding: 1rem 2rem;
 }
 
-.btn:hover {
-  background-color: var(--accent-color-variant);
-}
 .profile-photo {
-  flex: 1.5;
+  flex: 1;
+  position: relative;
+  overflow: hidden;
   display: flex;
-  justify-content: center;
   align-items: center;
-  perspective: 1000px; /* Enables 3D transform */
+  justify-content: center;
+  background: linear-gradient(45deg, var(--accent-color-variant), var(--accent-color));
+}
+
+.profile-photo::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  z-index: 1;
 }
 
 .profile-photo img {
-  max-width: 300px;
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: cover;
-  border-radius: 50%;
-  border: 3px solid var(--accent-color);
-  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4),
-              0 5px 10px rgba(0, 0, 0, 0.2),
-              inset 0 0 10px rgba(255, 255, 255, 0.05);
-  transition: transform 0.5s ease, box-shadow 0.5s ease;
-  transform-style: preserve-3d;
+  position: relative;
+  z-index: 2;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+  transition: transform 0.5s ease;
 }
 
-/* Add 3D rotation on hover */
-.profile-photo img:hover {
-  transform: rotateY(15deg) scale(1.05);
-  box-shadow: 0 25px 40px rgba(0, 0, 0, 0.5);
-}
-@keyframes rotateY {
-  0% { transform: rotateY(0deg); }
-  100% { transform: rotateY(180deg); }
+.profile-photo:hover img {
+  transform: scale(1.05);
 }
 
-.profile-photo img {
-  animation: rotateY 100s infinite linear;
+.logo {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1.5rem;
 }
 
+.icon-link {
+  font-size: 1.2rem;
+}
 
 @media (max-width: 768px) {
   .hero {
     flex-direction: column;
-    text-align: center;
+    min-height: auto;
   }
   
   .profile-photo {
+    height: 50vh;
     order: -1;
-    margin-bottom: 2rem;
   }
-}
-
-.logo {
-  margin-top: 1.5rem;
-}
-
-.icon-link {
-  color: var(--text-secondary);
-  text-decoration: none;
-  margin-right: 1rem;
-  transition: color 0.3s ease;
-}
-
-.icon-link:hover {
-  color: var(--accent-color);
-}
-
-svg {
-  margin-right: 12px;
-  vertical-align: middle;
+  
+  .intro-text {
+    padding: 2rem;
+  }
+  
+  .intro-text h1 {
+    font-size: 2.5rem;
+  }
+  
+  .intro-text h2 {
+    font-size: 1.5rem;
+  }
+  
+  .intro-text p {
+    font-size: 1rem;
+  }
 }
 
 /* Skills section styling */
