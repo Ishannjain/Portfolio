@@ -1,0 +1,19 @@
+{% extends "me/layout.html" %}
+{% load static %}
+
+{% block body %}
+<div style="max-width: 800px; margin: 0 auto; padding: 20px; color: white;">
+    <h2>{{ hob.name }}</h2>
+
+    {% if hob.img %}
+        <img src="{{ hob.img }}" alt="{{ hob.name}}" style="max-width: 100%; height: auto; margin: 20px 0;">
+    {% endif %}
+
+    <p><strong>Description:</strong></p>
+    <p>{{ hob.about }}</p>
+
+   
+
+    <p><a href="{% url 'projects' %}" style="color: #ccc;">← Back to Projects</a></p>
+</div>
+{% endblock %}
