@@ -3,132 +3,107 @@
 
 {% block body %}
 
-
-<div>
-  
-<!-- Main Content Area -->
-  <main>
-    <section id="home" class="hero">
-      <div class="intro-text">
-        <h1>Hello, my name is <span class="highlighted">Ishan Jain</span></h1>
-        <h2>I'm a <span class="web-designer">Web Designer</span></h2>
-        <p>
-          I'm a web designer with extensive experience for over 1 years. 
-          My expertise is to create and website design, graphic design.
-        </p>
-        <a href="{% static 'me\resume.pdf' %}" download class="btn btn-primary">
-    Download Resume
-</a>
-
-<p class="logo">
-      <!-- LinkedIn -->
-      <a href="https://www.linkedin.com/in/ishan-jain-6a719328a/" target="_blank" rel="noopener" class="icon-link">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#0A66C2" viewBox="0 0 24 24">
-          <path d="M4.98 3.5C4.98 4.88 3.9 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v16H0V8zm7.5 0h4.8v2.2h.1c.67-1.2 2.3-2.4 4.7-2.4 5 0 5.9 3.3 5.9 7.6V24h-5v-7.8c0-1.9-.04-4.4-2.7-4.4-2.7 0-3.1 2-3.1 4.3V24h-5V8z"/>
-        </svg>
-        
-      </a>
-
-      <!-- GitHub -->
-      <a href="https://github.com/Ishannjain" target="_blank" rel="noopener" class="icon-link">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#eee" viewBox="0 0 24 24">
-          <path d="M12 0C5.37 0 0 5.4 0 12.1c0 5.34 3.438 9.857 8.205 11.462.6.112.82-.26.82-.577 0-.285-.01-1.04-.015-2.04-3.338.73-4.042-1.618-4.042-1.618-.546-1.397-1.333-1.77-1.333-1.77-1.09-.75.082-.735.082-.735 1.204.086 1.837 1.25 1.837 1.25 1.07 1.85 2.807 1.315 3.492 1.005.107-.782.42-1.316.763-1.62-2.665-.3-5.467-1.357-5.467-6.03 0-1.33.467-2.418 1.235-3.27-.124-.303-.535-1.52.116-3.17 0 0 1.005-.32 3.3 1.25.957-.268 1.983-.402 3.003-.406 1.02.004 2.047.138 3.006.406 2.28-1.57 3.285-1.25 3.285-1.25.655 1.65.244 2.867.12 3.17.77.852 1.233 1.94 1.233 3.27 0 4.68-2.807 5.726-5.48 6.025.43.37.815 1.1.815 2.22 0 1.605-.015 2.898-.015 3.293 0 .32.216.694.825.576C20.565 21.952 24 17.425 24 12.1 24 5.4 18.63 0 12 0z"/>
-        </svg>
-       
-      </a>
-
-      <!-- Instagram -->
-      <a href="https://www.instagram.com/nj.ishan/?hl=en" target="_blank" rel="noopener" class="icon-link">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#E1306C" viewBox="0 0 24 24">
-          <path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.9.3 2.4.5.6.2 1.1.6 1.6 1.1.5.5.9 1 .9 1.6.2.5.4 1.2.5 2.4.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.9-.5 2.4-.2.6-.6 1.1-1.1 1.6-.5.5-1 .9-1.6 1.1-.5.2-1.2.4-2.4.5-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.9-.3-2.4-.5-.6-.2-1.1-.6-1.6-1.1-.5-.5-.9-1-.9-1.6-.2-.5-.4-1.2-.5-2.4C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-1.9.5-2.4.2-.6.6-1.1 1.1-1.6.5-.5 1-.9 1.6-1.1.5-.2 1.2-.4 2.4-.5C8.4 2.2 8.8 2.2 12 2.2m0-2.2C8.7 0 8.3 0 7 .1 5.7.2 4.8.5 4 .8 3 .9 2.2 1.5 1.5 2.2S.9 3 .8 4C.5 4.8.2 5.7.1 7 0 8.3 0 8.7 0 12s0 3.7.1 5c.1 1.3.4 2.2.7 3 .2 1 .8 1.8 1.5 2.5S3 23.1 4 23.2c.8.3 1.7.6 3 .7 1.3.1 1.7.1 5 .1s3.7 0 5-.1c1.3-.1 2.2-.4 3-.7 1-.2 1.8-.8 2.5-1.5s1.3-1.5 1.5-2.5c.3-.8.6-1.7.7-3 .1-1.3.1-1.7.1-5s0-3.7-.1-5c-.1-1.3-.4-2.2-.7-3-.2-1-.8-1.8-1.5-2.5S21 1 20 0.8c-.8-.3-1.7-.6-3-.7C15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zm0 10.3a4.1 4.1 0 1 1 0-8.2 4.1 4.1 0 0 1 0 8.2zm6.4-11.6a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
-        </svg>
-        
-      </a>
-    </p>
-      </div>
-
-      <div class="profile-photo">
-        <img src="{% static 'me/me.jpg' %}" alt="Ishan Jain" style="max-width: 100%; height:100%;  ">
-      </div>
-    </section>
-     <!-- Theme Switcher -->
-
-  </main>
-</div>
-<div class="timeline-container">
-  <!-- <h2 class="mb-5">My Timeline</h2> -->
-<div class="timeline">
-    {% for t in times %}
-    <div class="timeline-event">
-      <div class="circle">{{ t.date }}</div>
-      <div class="desc-box">{{ t.title }}</div>
-      <img src="{{t.image }}" class="card-img-top border-bottom">
-    </div>
-    {% endfor %}
-  </div>
-</div>
-
-
-<h1 class="mt-5 mb-4">My Projects</h1>
- {% for project in topprojs %}
-      <div class="col-md-4">
-            <div class="card bg-dark text-white h-100 card-hover slide-in-left">
-              <img src="{{ project.image_url }}" class="card-img-top border-bottom" alt="{{ project.title }}">
-              <div class="card-body d-flex flex-column">
-                <h5 class="card-title">{{ project.title }}</h5>
-                <p class="card-text">{{ project.description }}</p>
-                <p class="card-text">Tech_stack: {{ project.tech_stack }}</p>
-                <a href="{{ project.visit_link }}" target="_blank" class="btn btn-outline-light mt-auto">Visit Project</a>
-                
-              </div>
-            </div>
-          </div>
-        {% endfor %}
+<main>
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="intro-text">
+      <h1>Hello, my name is <span class="highlighted">Ishan Jain</span></h1>
+      <h2>I'm a <span class="web-designer">Web Designer</span></h2>
+      <p>
+        I'm a web designer with extensive experience for over 1 year. 
+        My expertise is in website design and graphic design.
+      </p>
+      <a href="{% static 'me/resume.pdf' %}" download class="btn btn-primary">Download Resume</a>
       
-    
+      <p class="logo">
+        <!-- Social Links -->
+        <a href="https://www.linkedin.com/in/ishan-jain-6a719328a/" target="_blank" rel="noopener" class="icon-link">
+          <!-- LinkedIn SVG -->
+        </a>
+        <a href="https://github.com/Ishannjain" target="_blank" rel="noopener" class="icon-link">
+          <!-- GitHub SVG -->
+        </a>
+        <a href="https://www.instagram.com/nj.ishan/?hl=en" target="_blank" rel="noopener" class="icon-link">
+          <!-- Instagram SVG -->
+        </a>
+      </p>
+    </div>
 
+    <div class="profile-photo">
+      <img src="{% static 'me/me.jpg' %}" alt="Ishan Jain" style="max-width:100%; height:100%;">
+    </div>
+  </section>
+</main>
 
-
+<!-- Timeline Section -->
+<div class="timeline-container">
+  <div class="timeline">
+    {% for t in times %}
+      <div class="timeline-event">
+        <div class="circle">{{ t.date }}</div>
+        <div class="desc-box">{{ t.title }}</div>
+        <img src="{{ t.image }}" alt="{{ t.title }}" class="card-img-top border-bottom">
+      </div>
+    {% endfor %}
+  </div>
 </div>
+
+<!-- Projects Section -->
+<h1 class="mt-5 mb-4">My Projects</h1>
+<div class="row">
+  {% for project in topprojs %}
+    <div class="col-md-4">
+      <div class="card bg-dark text-white h-100 card-hover slide-in-left">
+        <img src="{{ project.image_url }}" alt="{{ project.title }}" class="card-img-top border-bottom">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">{{ project.title }}</h5>
+          <p class="card-text">{{ project.description }}</p>
+          <p class="card-text">Tech stack: {{ project.tech_stack }}</p>
+          <a href="{{ project.visit_link }}" target="_blank" class="btn btn-outline-light mt-auto">Visit Project</a>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+<!-- Orbit Skills Section -->
 <div class="d-flex" id="orbit">
-<div class="orbit-wrapper" >
-  <div class="center-circle">My Skills</div>
-  <div class="orbit-path"></div> <!-- The circular path -->
-  <div class="orbit-circle">
-    {% for s in skills %}
-      <div class="orbit-item" style="--i: {{ forloop.counter0 }}; --total: {{ skills|length }};">
-        {{ s.name }}
-        
-      </div>
-    {% endfor %}
+  <div class="orbit-wrapper">
+    <div class="center-circle">My Skills</div>
+    <div class="orbit-path"></div>
+    <div class="orbit-circle">
+      {% for s in skills %}
+        <div class="orbit-item" style="--i: {{ forloop.counter0 }}; --total: {{ skills|length }};">
+          {{ s.name }}
+        </div>
+      {% endfor %}
+    </div>
   </div>
-</div>
-<div class="orbit-wrapper">
-  <div class="center-circle">My Professional Skills</div>
-  <div class="orbit-path"></div> <!-- The circular path -->
-  <div class="orbit-circle">
-    {% for p in pro %}
-      <div class="orbit-item" style="--i: {{ forloop.counter0 }}; --total: {{ skills|length }};">
-        {{ p.name }}
-      </div>
-    {% endfor %}
-  </div>
-</div>
-</div>
-<div class="skills-section">
 
+  <div class="orbit-wrapper">
+    <div class="center-circle">My Professional Skills</div>
+    <div class="orbit-path"></div>
+    <div class="orbit-circle">
+      {% for p in pro %}
+        <div class="orbit-item" style="--i: {{ forloop.counter0 }}; --total: {{ pro|length }};">
+          {{ p.name }}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<!-- Hobbies Section -->
+<div class="skills-section">
   <div class="hobbies-container">
     {% for k in known %}
       <div class="hobby-item">
         <h4 class="hobby-name">{{ k.name }}</h4>
-        </div>
+      </div>
     {% empty %}
       <p class="no-hobbies">No hobbies found.</p>
     {% endfor %}
   </div>
 </div>
-
-
-
 
 {% endblock %}

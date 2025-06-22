@@ -10,8 +10,9 @@
         <h1>Hello, my name is <span class="highlighted">Ishan Jain</span></h1>
         <h2>I'm also a <span class="web-designer">Student</span></h2>
         <p>
-          I'm a web designer with extensive experience for over 1 years. 
-          My expertise is to create and website design, graphic design.
+        I’m a curious and motivated individual who values growth and creativity. 
+        Beyond tech, I enjoy sports activity and interest in religious activity which keep me inspired and balanced. 
+        I believe in teamwork, empathy, and continuous learning.
         </p>
         
 
@@ -51,25 +52,61 @@
   </main>
 </div>
 
-
-<!-- Social Media Links -->
-   <div class="card mb-3 bg-dark text-light" style="max-width:90% ;">
-  {% for mor in more %}
+{% for mor in more %}
+<div class="w-100 mb-4" style="background-color: #1e1e1e; color: #ffffff; border-radius: 10px; overflow: hidden;">
   <div class="row g-0">
-    <div class="col-md-4">
-      <img src="{{ mor.imgage }}" class="card-img-top border-bottom border-secondary" alt="{{ mor.title }}">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title text-white">{{ mor.title }}</h5>
-        <p class="card-text text-light">{{ mor.note }}</p>
+    
+    {% if forloop.counter|divisibleby:"2" %}
+    <!-- EVEN: Image on Right -->
+    <div class="col-md-8 d-flex align-items-center">
+      <div class="card-body p-4">
+        <h5 style="color: #b48eed; font-size: 1rem; font-weight: 600;" class="mb-2">
+          {{ mor.title }}
+        </h5>
+        <p style="font-size: 0.85rem; color: #dddddd;" class="mb-0">
+          {{ mor.note }}
+        </p>
       </div>
     </div>
-  </div>
-  {% endfor %}
-</div>
+    <div class="col-md-4" style="min-height: 200px;">
+      <div style="
+        width: 100%;
+        height: 100%;
+        background-image: url('{{ mor.imgage }}');
+        background-size: cover;
+        background-position: center;
+      "></div>
+    </div>
 
-    
+    {% else %}
+    <!-- ODD: Image on Left -->
+    <div class="col-md-4" style="min-height: 200px;">
+      <div style="
+        width: 100%;
+        height: 100%;
+        background-image: url('{{ mor.image}}');
+        background-size: cover;
+        background-position: center;
+      "></div>
+    </div>
+    <div class="col-md-8 d-flex align-items-center">
+      <div class="card-body p-4">
+        <h5 style="color: #b48eed; font-size: 1rem; font-weight: 600;" class="mb-2">
+          {{ mor.title }}
+        </h5>
+        <p style="font-size: 0.85rem; color: #dddddd;" class="mb-0">
+          {{ mor.note }}
+        </p>
+      </div>
+    </div>
+    {% endif %}
+
+  </div>
+</div>
+{% endfor %}
+
+
+
 
 <div class="skills-section">
   <h3>Hobbies</h3>
