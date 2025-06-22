@@ -27,6 +27,14 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['portfolio-2-p043.onrender.com', 'localhost', '127.0.0.1']
 
+import os
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]  # your dev static folder
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')   # collectstatic will dump files here
 
 
 # Application definition
@@ -46,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
