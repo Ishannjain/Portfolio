@@ -2,138 +2,7 @@
 {% load static %}
 
 {% block body %}
-<style>
-/* General layout */
-body {
-  background-color: #000;
-  color: #fff;
-  margin: 0;
-  padding: 0;
-}
 
-.page-container {
-  margin: 1rem auto;
-  padding: 2rem 1rem;
-}
-
-/* Typography */
-h1, h2, h3, h4 {
-  color: #fff;
-}
-
-/* Flex container for skills & pro skills */
-.sku-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-}
-
-/* Individual skill sections */
-.skills-section, .certificates-section {
-  flex: 1;
-  padding: 2rem;
-  background-color: var(--bg-secondary, #111);
-  border-radius: 12px;
-  min-width: 300px;
-  height: auto;
-}
-
-.skills-section h3, .certificates-section h3 {
-  color: var(--accent-color, #0dcaf0);
-  font-size: 2rem;
-  margin-bottom: 2rem;
-  text-align: center;
-  position: relative;
-}
-
-.skills-section h3::after,
-.certificates-section h3::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 3px;
-  background-color: var(--accent-color, #0dcaf0);
-  border-radius: 2px;
-}
-
-/* Skill item box */
-.skill-item {
-  margin-bottom: 1rem;
-  padding: 1rem;
-  background-color: var(--bg-primary, #1a1a1a);
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-  transition: transform 0.3s ease;
-}
-.skill-item:hover {
-  transform: translateY(-5px);
-}
-.skill-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.skill-name {
-  color: var(--text-primary, #fff);
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-.skill-level {
-  color: var(--accent-color, #0dcaf0);
-  font-weight: bold;
-}
-.progress {
-  background-color: var(--bg-secondary, #333);
-  height: 10px;
-  border-radius: 5px;
-  overflow: hidden;
-}
-.progress-bar {
-  background: linear-gradient(90deg, var(--accent-color, #0dcaf0), var(--success-color, #198754));
-  height: 100%;
-  border-radius: 5px;
-  position: relative;
-}
-.progress-bar::after {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(90deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.1) 100%);
-  animation: shimmer 2s infinite;
-}
-@keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-
-/* Slide animations */
-@keyframes slideInLeft {
-  from { opacity: 0; transform: translateX(-50px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-@keyframes slideInRight {
-  from { opacity: 0; transform: translateX(50px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-.slide-in-left {
-  animation: slideInLeft 0.7s ease-out forwards;
-}
-.slide-in-right {
-  animation: slideInRight 0.7s ease-out forwards;
-}
-
-/* Cards hover effect */
-.card-hover {
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-.card-hover:hover {
-  transform: scale(1.05);
-  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.25);
-}
-</style>
 
 <div class="page-container">
 
@@ -149,7 +18,7 @@ h1, h2, h3, h4 {
             <span class="skill-level">{{ skill.level }}%</span>
           </div>
           <div class="progress">
-            <div class="progress-bar" style="width: {{ skill.level }}%;"
+            <div class="progress-bar" 
               aria-valuenow="{{ skill.level }}" aria-valuemin="0" aria-valuemax="100">
             </div>
           </div>
@@ -167,7 +36,7 @@ h1, h2, h3, h4 {
             <span class="skill-level">{{ skill.level }}%</span>
           </div>
           <div class="progress">
-            <div class="progress-bar" style="width: {{ skill.level }}%;"
+            <div class="progress-bar" 
               aria-valuenow="{{ skill.level }}" aria-valuemin="0" aria-valuemax="100">
             </div>
           </div>
