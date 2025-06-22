@@ -27,6 +27,14 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['portfolio-2-p043.onrender.com', 'localhost', '127.0.0.1']
 
+import os
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # used in production
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]  # used in development
 
 
 # Application definition
@@ -45,6 +53,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+        'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
