@@ -35,16 +35,70 @@
   </section>
 </main>
 
-<!-- Timeline Section -->
-<div class="timeline-container">
-  <div class="timeline">
-    {% for t in times %}
-      <div class="timeline-event">
-        <div class="circle">{{ t.date }}</div>
-        <div class="desc-box">{{ t.title }}</div>
-        <img src="{{ t.image }}" alt="{{ t.title }}" class="card-img-top border-bottom">
+<!-- Timeline + Orbit Section Side by Side -->
+<div class="timeline-orbit-flex">
+  <div class="timeline-container">
+    <div class="timeline-infographic">
+      {% for t in times %}
+        <div class="timeline-row">
+          {% if forloop.counter0|divisibleby:2 %}
+            <div class="timeline-card left">
+              <div class="card-content">
+                <h4>{{ t.title }}</h4>
+                <p>{{ t.desc }}</p>
+                {% if t.image %}<img src="{{ t.image }}" alt="{{ t.title }}">{% endif %}
+              </div>
+            </div>
+            <div class="timeline-date">
+              <span>{{ t.date }}</span>
+              <div class="timeline-dot"></div>
+            </div>
+            <div class="timeline-card right empty"></div>
+          {% else %}
+            <div class="timeline-card left empty"></div>
+            <div class="timeline-date">
+              <span>{{ t.date }}</span>
+              <div class="timeline-dot"></div>
+            </div>
+            <div class="timeline-card right">
+              <div class="card-content">
+                <h4>{{ t.title }}</h4>
+                <p>{{ t.desc }}</p>
+                {% if t.image %}<img src="{{ t.image }}" alt="{{ t.title }}">{% endif %}
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="orbit-side-vertical">
+    <div class="orbit-skills-top">
+      <div class="orbit-wrapper">
+        <div class="center-circle">My Skills</div>
+        <div class="orbit-path"></div>
+        <div class="orbit-circle">
+          {% for s in skills %}
+            <div class="orbit-item" style="--i: {{ forloop.counter0 }}; --total: {{ skills|length }};">
+              {{ s.name }}
+            </div>
+          {% endfor %}
+        </div>
       </div>
-    {% endfor %}
+    </div>
+    <div class="orbit-skills-bottom">
+      <div class="orbit-wrapper">
+        <div class="center-circle">My Professional Skills</div>
+        <div class="orbit-path"></div>
+        <div class="orbit-circle">
+          {% for p in pro %}
+            <div class="orbit-item" style="--i: {{ forloop.counter0 }}; --total: {{ pro|length }};">
+              {{ p.name }}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -64,33 +118,6 @@
       </div>
     </div>
   {% endfor %}
-</div>
-
-<!-- Orbit Skills Section -->
-<div class="d-flex" id="orbit">
-  <div class="orbit-wrapper">
-    <div class="center-circle">My Skills</div>
-    <div class="orbit-path"></div>
-    <div class="orbit-circle">
-      {% for s in skills %}
-        <div class="orbit-item" style="--i: {{ forloop.counter0 }}; --total: {{ skills|length }};">
-          {{ s.name }}
-        </div>
-      {% endfor %}
-    </div>
-  </div>
-
-  <div class="orbit-wrapper">
-    <div class="center-circle">My Professional Skills</div>
-    <div class="orbit-path"></div>
-    <div class="orbit-circle">
-      {% for p in pro %}
-        <div class="orbit-item" style="--i: {{ forloop.counter0 }}; --total: {{ pro|length }};">
-          {{ p.name }}
-        </div>
-      {% endfor %}
-    </div>
-  </div>
 </div>
 
 <!-- Hobbies Section -->
