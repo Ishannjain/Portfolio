@@ -2,7 +2,31 @@
 {% load static %}
 
 {% block body %}
+<style>
+  #projectss{
+    animation: loop 5s linear infinite;
+  }
+  @keyframes loop{
+    0%{
+      transform:translateX(0);
+    }
+    100%{
+      transform:translateX(-100%);
+    }
+  }
 
+  #certss{
+    animation: loops 5s linear infinite;
+  }
+  @keyframes loops{
+    0%{
+      transform:translateY(0);
+    }
+    100%{
+      transform:translateY(10%);
+    }
+  }
+  </style>
 <div class="skills-certificates-container">
   <div class="skills-row">
 
@@ -41,7 +65,7 @@
     <!-- Certificates -->
     <div class="skills-section certificates-section">
       <h3>Certificates</h3>
-      <div class="cert-grid">
+      <div class="cert-grid" id="certss">
         {% for cer in Certificatess %}
           <div class="cert-card">
             <img src="{{ cer.img }}" class="cert-img" alt="{{ cer.name }}">
@@ -66,7 +90,7 @@
       <h3 class="mt-4">{{ skill.name }}</h3>
       <div class="row gy-4">
         {% for project in skill.project_set.all %}
-          <div class="col-md-4">
+          <div class="col-md-4" id="projectss">
             <div class="card bg-dark text-white h-100 card-hover slide-in-left">
               <img src="{{ project.image_url }}" class="card-img-top border-bottom" alt="{{ project.title }}">
               <div class="card-body d-flex flex-column">

@@ -2,7 +2,19 @@
 {% load static %}
 
 {% block body %}
-
+<style>
+  #projectss{
+    animation: loop 5s linear infinite;
+  }
+  @keyframes loop{
+    0%{
+      transform:translateX(0);
+    }
+    100%{
+      transform:translateX(-100%);
+    }
+  }
+</style>
 <main>
   <!-- Hero Section -->
   <section id="home" class="hero">
@@ -106,7 +118,7 @@
 <h1 class="mt-5 mb-4">My Projects</h1>
 <div class="row">
   {% for project in topprojs %}
-    <div class="col-md-4">
+    <div class="col-md-4" id="projectss">
       <div class="card bg-dark text-white h-100 card-hover slide-in-left">
         <img src="{{ project.image_url }}" alt="{{ project.title }}" class="card-img-top border-bottom">
         <div class="card-body d-flex flex-column">
@@ -122,15 +134,76 @@
 
 <!-- Hobbies Section -->
 <div class="skills-section">
-  <div class="hobbies-container">
-    {% for k in known %}
-      <div class="hobby-item">
-        <h4 class="hobby-name">{{ k.name }}</h4>
-      </div>
-    {% empty %}
-      <p class="no-hobbies">No hobbies found.</p>
-    {% endfor %}
+  <div class="scroll-wrapper">
+    <div class="scroll-track">
+      {% for k in known %}
+        <div class="hobby-item-block">
+          <h4 class="hobby-name">{{ k.name }}</h4>
+        </div>
+      {% endfor %}
+      <!-- Duplicate for seamless scroll -->
+      
+    </div>
   </div>
 </div>
+
+<style>
+ .skills-section {
+  width: 100%;
+  overflow: hidden;
+  padding: 2rem 0;
+}
+
+.scroll-wrapper {
+  overflow: hidden;
+  width: 100%;
+}
+
+.scroll-track {
+  display: flex;
+  gap: 2rem;
+  animation: scroll-left 15s linear infinite;
+  width: max-content;
+}
+
+.hobby-item-block {
+  width: 100px;
+  height: 100px;
+  background-color: #666;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.hobby-name {
+  font-size: 1rem;
+  text-align: center;
+}
+
+/* Animation */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+  25% {
+    transform: translateX(-100%);
+  }
+  50%{
+     transform: translateX(100%);
+  }
+  75%{
+     transform: translateX(-50%);
+  }
+  100%{
+     transform: translateX(0%);
+  }
+}
+
+
+</style>
 
 {% endblock %}
