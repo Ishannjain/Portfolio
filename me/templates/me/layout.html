@@ -75,13 +75,24 @@ h2,h4{
 
 
 /* Profile Photo */
+.btn {
+  font-size: 1rem;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  width: auto;
+  text-align: initial;
+}
 
+.profile-photo {
+  flex: 1;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(45deg, var(--accent-variant), var(--accent));
+  min-width: 280px;
+}
 .profile-photo img {
- 
+  width: 100%; height: 100%;
   object-fit: cover;
   transition: transform 0.5s ease;
-  height:100%;
-  width:100%;
 }
 .profile-photo:hover img {
   transform: scale(1.05);
@@ -122,7 +133,7 @@ h2,h4{
       gap: 7rem;
       align-items: center;
       justify-content: space-evenly;
-      margin: 3.5rem;
+      margin: 2.5rem;
       background: rgba(30, 30, 30, 0.7);
     }
 
@@ -198,7 +209,7 @@ h2,h4{
       box-shadow: 0 0 15px var(--success);
       color: var(--success);
       transform: rotate(var(--angle)) translate(110px) rotate(calc(-1 * var(--angle))) scale(1.1);
-      animation : 1s ski infinite;
+      
     }
     
 @keyframes orbitRotate {
@@ -217,7 +228,7 @@ h2,h4{
   border-radius: 50%;
   top: 0;
   left: 0;
-  animation: orbitRotate 20s linear infinite;
+  animation: orbitRotate 2s linear infinite;
 }
 
     .timeline-infographic {
@@ -477,7 +488,12 @@ h2,h4{
   background: var(--bg-secondary);
   padding: 2rem;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;  /* centers content horizontally */
+  justify-content: center; /* optional: centers vertically if needed */
 }
+
 .footer-container a {
   color: var(--accent);
   margin: 0 0.5rem;
@@ -634,6 +650,7 @@ h2,h4{
 
 /* Tree Timeline Styles */
 
+
 </style>
 <body>
     
@@ -669,18 +686,18 @@ h2,h4{
         {% endblock %}
     </div>
     
-    <footer>
+<footer>
   <div class="footer-container" style="background-color: #000; padding: 20px; display: flex; flex-wrap: wrap; align-items: center; gap: 40px; color: #fff;">
     
-    <!-- Contact Header --><h3 style="color: #d1a0ff; margin: 0;">Contact Me</h3>
+    <!-- Contact Header -->
  
-
-    <!-- Email -->
+ <div class="social-icons" style="display: flex; align-items: center; gap: 15px;">
+    <!-- Email --><h3 style="color: #d1a0ff; margin: 0;">Contact Me</h3>
     <a href="mailto:jain.ishannuna@gmail.com" class="icon-link" style="display: flex; align-items: center; gap: 8px; color: white; text-decoration: none;">
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
         <path d="M12 13.5L0 6V18h24V6l-12 7.5zM12 12L0 4h24L12 12z"/>
       </svg>
-      jain.ishannuna@gmail.com
+     
     </a>
 
     <!-- Phone -->
@@ -688,11 +705,11 @@ h2,h4{
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
         <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21c1.2.48 2.52.73 3.88.73a1 1 0 011 1v3.5a1 1 0 01-1 1C10.07 22 2 13.93 2 3.5a1 1 0 011-1H6.5a1 1 0 011 1c0 1.36.25 2.68.73 3.88a1 1 0 01-.21 1.11l-2.2 2.2z"/>
       </svg>
-      +91 6260364148
+      
     </a>
 
     <!-- Social Icons -->
-    <div class="social-icons" style="display: flex; align-items: center; gap: 15px;">
+   
       <!-- LinkedIn -->
       <a href="https://www.linkedin.com/in/ishan-jain-6a719328a/" target="_blank" rel="noopener">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#0A66C2" viewBox="0 0 24 24">
@@ -713,6 +730,8 @@ h2,h4{
           <path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.9.3 2.4.5.6.2 1.1.6 1.6 1.1.5.5.9 1 .9 1.6.2.5.4 1.2.5 2.4.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.9-.5 2.4-.2.6-.6 1.1-1.1 1.6-.5.5-1 .9-1.6 1.1-.5.2-1.2.4-2.4.5-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.9-.3-2.4-.5-.6-.2-1.1-.6-1.6-1.1-.5-.5-.9-1-.9-1.6-.2-.5-.4-1.2-.5-2.4C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-1.9.5-2.4.2-.6.6-1.1 1.1-1.6.5-.5 1-.9 1.6-1.1.5-.2 1.2-.4 2.4-.5C8.4 2.2 8.8 2.2 12 2.2m0-2.2C8.7 0 8.3 0 7 .1 5.7.2 4.8.5 4 .8 3 .9 2.2 1.5 1.5 2.2S.9 3 .8 4C.5 4.8.2 5.7.1 7 0 8.3 0 8.7 0 12s0 3.7.1 5c.1 1.3.4 2.2.7 3 .2 1 .8 1.8 1.5 2.5S3 23.1 4 23.2c.8.3 1.7.6 3 .7 1.3.1 1.7.1 5 .1s3.7 0 5-.1c1.3-.1 2.2-.4 3-.7 1-.2 1.8-.8 2.5-1.5s1.3-1.5 1.5-2.5c.3-.8.6-1.7.7-3 .1-1.3.1-1.7.1-5s0-3.7-.1-5c-.1-1.3-.4-2.2-.7-3-.2-1-.8-1.8-1.5-2.5S21 1 20 0.8c-.8-.3-1.7-.6-3-.7C15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zm0 10.3a4.1 4.1 0 1 1 0-8.2 4.1 4.1 0 0 1 0 8.2zm6.4-11.6a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
         </svg>
       </a>
+      <a href="{% static 'me/resume.pdf' %}" download class="btn">Resume</a>
+      
     </div>
   </div>
 </footer>

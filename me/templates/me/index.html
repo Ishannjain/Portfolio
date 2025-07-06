@@ -3,6 +3,7 @@
 
 {% block body %}
 <style>
+  
   #projectss{
     animation: loop 5s linear infinite;
   }
@@ -15,6 +16,7 @@
     }
   }
 </style>
+<div>
 <main>
   <!-- Hero Section -->
   <section id="home" class="hero">
@@ -25,28 +27,17 @@
         I'm a web designer with extensive experience for over 1 year. 
         My expertise is in website design and graphic design.
       </p>
-      <a href="{% static 'me/resume.pdf' %}" download class="btn btn-secondary">Download Resume</a>
+      <!-- <a href="{% static 'me/resume.pdf' %}" download class="btn btn-primary">Download Resume</a> -->
       
-      <p class="logo">
-        <!-- Social Links -->
-        <a href="https://www.linkedin.com/in/ishan-jain-6a719328a/" target="_blank" rel="noopener" class="icon-link">
-          <!-- LinkedIn SVG -->
-        </a>
-        <a href="https://github.com/Ishannjain" target="_blank" rel="noopener" class="icon-link">
-          <!-- GitHub SVG -->
-        </a>
-        <a href="https://www.instagram.com/nj.ishan/?hl=en" target="_blank" rel="noopener" class="icon-link">
-          <!-- Instagram SVG -->
-        </a>
-      </p>
+      
     </div>
 
     <div class="profile-photo">
-      <img src="{% static 'me/me.jpg' %}" alt="Ishan Jain" style="width:cover; height:cover;">
+      <img src="{% static 'me/me.jpg' %}" alt="Ishan Jain" style="min-width:100%; height:100%;">
     </div>
   </section>
 </main>
-
+</div>
 
   <div class="timeline-orbit-flex">
     <div class="skills-section">
@@ -66,14 +57,13 @@
           </div>
           <div class="timeline-date">
             <span>{{ t.date }}</span>
-            <div class="timeline-dot"></div>
+            
           </div>
           <div class="timeline-card right empty"></div>
           {% else %}
           <div class="timeline-card left empty"></div>
           <div class="timeline-date">
             <span>{{ t.date }}</span>
-            <div class="timeline-dot"></div>
           </div>
           <div class="timeline-card right">
             <div class="card-content">
@@ -85,6 +75,7 @@
           {% endif %}
         </div>
         {% endfor %}
+        
       </div>
     </div>
 </div>
@@ -126,7 +117,7 @@
     <div class="scroll-track">
       {% for k in known %}
         <div class="hobby-item-block">
-          <h4 class="hobby-name">{{ k.name }}</h4>
+          <h1 class="hobby-name">{{ k.name }}</h1>
         </div>
       {% endfor %}
       <!-- Duplicate for seamless scroll -->
@@ -139,7 +130,7 @@
   <h1 class=" text-center">My Projects</h1>
  <div class="container my-5">
   {% for project in topprojs %}
-    <div id="projectss" class="row align-items-center bg-dark text-white p-5 mb-5 rounded-4 shadow-lg flex-column flex-lg-row">
+    <div  class="row align-items-center bg-dark text-white p-5 mb-5 rounded-4 shadow-lg flex-column flex-lg-row">
       
       <!-- Text Section -->
       <div class="col-lg-6 mb-4 mb-lg-0">
@@ -174,6 +165,7 @@ img {
 
 <style>
  .skills-section {
+  
   width: 100%;
   overflow: hidden;
   padding: 2rem 0;
@@ -199,7 +191,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 10px;
+  border-radius:50%;
   flex-shrink: 0;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }

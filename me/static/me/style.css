@@ -25,14 +25,8 @@ body::-webkit-scrollbar, html::-webkit-scrollbar {
   display: block;
 }
 
-main {
-  /* no flex or unset */
-}
 
-h1, h2, h3, h4 {
-  margin: 0;
-  color: var(--text-primary);
-}
+
 
 /* Hero */
 .hero {
