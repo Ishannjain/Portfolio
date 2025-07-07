@@ -44,7 +44,7 @@
       </div>
 
       <div class="profile-photo">
-        <img src="{% static 'me/me.jpg' %}" alt="Ishan Jain" style="min-width:100%; height:100%;">
+        <img src="{% static 'me/mess.jpg' %}" alt="Ishan Jain" style="min-width:100%; height:100%;">
       </div>
     </section>
      <!-- Theme Switcher -->
@@ -105,18 +105,95 @@
 
 
 
-<div class="skills-section">
+<div class="skills-section hobbies-section">
   <h3>Hobbies</h3>
   <div class="hobbies-container">
     {% for hob in hobbies %}
       <div class="hobby-item">
-        <!-- <h4 class="hobby-name">{{ hob.name }}</h4> -->
-        <h4> <a class="nav-link" href="{% url 'detail_hobby' hob.id %}">{{ hob.name }}</a></h4>
+        <h4>
+          <a class="hobby-link" href="{% url 'detail_hobby' hob.id %}">{{ hob.name }}</a>
+        </h4>
       </div>
     {% empty %}
       <p class="no-hobbies">No hobbies found.</p>
     {% endfor %}
   </div>
 </div>
+<style>
+  .hobbies-section {
+  background-color: #1e1e2f; /* dark purple/blue background */
+  padding: 2rem 1rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
+  background-color: #1e1e1e;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.hobbies-section h3 {
+  color: #b28cff; /* purple accent */
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  position: relative;
+  display: inline-block;
+}
+
+.hobbies-section h3::after {
+  content: "";
+  display: block;
+  background-color: #1e1e1e;
+  height: 3px;
+  
+  margin: 8px auto 0;
+  border-radius: 3px;
+}
+
+.hobbies-container {
+  background-color: #1e1e1e;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.2rem 2rem;
+  margin-top: 1.5rem;
+}
+
+.hobby-item {
+  background-color: #1e1e1e;
+  background: #2c2c44; /* dark button background */
+  padding: 0.75rem 1.8rem;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.7);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.hobby-item:hover {
+  background-color: #3a3a5a; /* lighter on hover */
+  transform: scale(1.05);
+}
+
+.hobby-link {
+  color: #b28cff; /* purple text */
+  font-weight: 600;
+  font-size: 1.15rem;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+
+.hobby-link:hover {
+  color: #ffc107; /* bright accent on hover */
+  text-decoration: underline;
+}
+
+.no-hobbies {
+  color: #aaa;
+  font-style: italic;
+  font-size: 1.1rem;
+  margin-top: 1rem;
+}
+
+</style>
 
 {% endblock %}

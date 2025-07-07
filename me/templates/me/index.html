@@ -4,17 +4,33 @@
 {% block body %}
 <style>
   
-  #projectss{
-    animation: loop 5s linear infinite;
+
+ #projectss-row {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  animation: scrollX 20s linear infinite;
+  padding-bottom: 1rem;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+}
+
+#projectss-row::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+
+  @keyframes scrollX {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(-100%); }
+    75%{transform:translate(00%)}
+    100%{transform:translate(100%)}
   }
-  @keyframes loop{
-    0%{
-      transform:translateX(0);
-    }
-    100%{
-      transform:translateX(-100%);
-    }
+
+  #projectss-row:hover {
+    animation-play-state: paused;
   }
+
 </style>
 <div>
 <main>
@@ -126,34 +142,79 @@
 </div>
 
 <!-- Projects Section -->
+
+
+<style>
+/* Hide scrollbar across browsers */
+#projectss-row {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  animation: scrollProjects 30s linear infinite;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE & Edge */
+}
+#projectss-row::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Auto-scrolling animation */
+@keyframes scrollProjects {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.project-card {
+  flex: 0 0 300px;
+  min-width: 300px;
+  max-width: 300px;
+  background-color: #343a40;
+  color: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.project-card img {
+  height: 180px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.project-card .card-body {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.project-card .btn {
+  margin-top: auto;
+}
+</style>
+
+<!-- Projects Section -->
 <div class="skills-section">
-  <h1 class=" text-center">My Projects</h1>
- <div class="container my-5">
-  {% for project in topprojs %}
-    <div  class="row align-items-center bg-dark text-white p-5 mb-5 rounded-4 shadow-lg flex-column flex-lg-row">
-      
-      <!-- Text Section -->
-      <div class="col-lg-6 mb-4 mb-lg-0">
-        <p class="text-uppercase text-info fw-semibold mb-1">{{ project.description}} • {{ project.tech_stack }}</p>
-        <h2 class="fw-bold display-6">{{ project.title }}</h2>
-        <hr class="border-secondary my-3" style="max-width: 280px;">
-        
-     
-        
-        <a href="{{ project.visit_link }}" target="_blank" class="btn btn-light btn-lg rounded-pill mt-3">
-          Project Link<i class="bi bi-arrow-up-right ms-1"></i>
-        </a>
+  <h1 class="text-center mb-4">My Projects</h1>
+  <div id="projectss-row">
+    {% for project in topprojs %}
+      <div class="project-card">
+        <img src="{{ project.image_url }}" alt="{{ project.title }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ project.title }}</h5>
+          <p class="card-text">{{ project.tech_stack }}</p>
+          <a href="{{ project.visit_link }}" target="_blank" class="btn btn-outline-light">Visit Project</a>
+          <a class="nav-link mt-2" href="{% url 'project_detail' project.id %}">More Detailed</a>
+        </div>
       </div>
-
-      <!-- Image Section -->
-      <div class="col-lg-6 text-center">
-        <img src="{{ project.image_url }}" alt="{{ project.title }} Screenshot" class="img-fluid rounded-4 shadow">
-      </div>
-    </div>
-  {% endfor %}
+    {% endfor %}
+  </div>
 </div>
 
-</div>
+
 
 <style>
 img {

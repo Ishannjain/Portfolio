@@ -643,15 +643,24 @@ h2,h4{
   }
 }
 
-@keyframes shimmer {
-  from {}
-  to {}
-}
 
 /* Tree Timeline Styles */
 
 
 </style>
+<script>
+  toggle.addEventListener('click', () => {
+  const isOpen = links.classList.toggle('open');
+  toggle.setAttribute('aria-expanded', isOpen);
+});
+toggle.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter' || e.key === ' ') {
+    const isOpen = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', isOpen);
+  }
+});
+
+</script>
 <body>
     
     <nav class="navbar-custom">

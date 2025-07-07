@@ -17,21 +17,40 @@ def index(request):
         'known':known
     })
 
+from django.shortcuts import render
+from .models import Project, Skill, Hobby, Certificates, ProfessionalSkill, topproj
+
 def projects_view(request):
-    topprojs=topproj.objects.all()
-    projects = Project.objects.all()
+    topprojs = topproj.objects.all()
+    all_projects = Project.objects.all()
     skills = Skill.objects.prefetch_related('project_set')
-    hobbies=Hobby.objects.all()
-    Certificatess=Certificates.objects.all()
-    ProfessionalSkills = ProfessionalSkill.objects.all()
+    hobbies = Hobby.objects.all()
+    certificates = Certificates.objects.all()
+    professional_skills = ProfessionalSkill.objects.all()
+
+    grouped_skills = []
+    other_projects = []
+
+    for skill in skills:
+        skill_projects = skill.project_set.all()
+        if skill_projects.count() >= 3:
+            grouped_skills.append({
+                'skill': skill,
+                'projects': skill_projects
+            })
+        else:
+            other_projects.extend(skill_projects)
+
     return render(request, 'me/projects.html', {
-       'proskills': ProfessionalSkills,
-        'projects': projects,
-        'skills':skills,
-        'hobbies':hobbies,
-        'Certificatess': Certificatess,
-        'topprojs':topprojs
-        })
+        'proskills': professional_skills,
+        'skills': skills,
+        'hobbies': hobbies,
+        'Certificatess': certificates,
+        'topprojs': topprojs,
+        'grouped_skills': grouped_skills,      # NEW: for skills with 3+ projects
+        'other_projects': other_projects       # NEW: merged category
+    })
+
 def about_view(request):
     more=more_about.objects.all()
     ProfessionalSkills = ProfessionalSkill.objects.all()
