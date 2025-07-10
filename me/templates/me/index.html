@@ -195,33 +195,137 @@
   margin-top: auto;
 }
 </style>
-
 <!-- Projects Section -->
+<style>
+/* Project section wrapper */
+.skills-section {
+  width: 100%;
+  overflow: hidden;
+  padding: 2rem 0;
+}
+
+/* Outer scrolling container */
+#projectss-row {
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+/* Inner scrolling content */
+.scroll-content {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1rem;
+  animation: scrollProjects 30s linear infinite;
+}
+
+/* Pause animation on hover */
+#projectss-row:hover .scroll-content {
+  animation-play-state: paused;
+}
+
+/* Scrolling animation */
+@keyframes scrollProjects {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Hide scrollbar */
+#projectss-row::-webkit-scrollbar {
+  display: none;
+}
+#projectss-row {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Project card styling */
+.project-card {
+  flex: 0 0 300px;
+  min-width: 300px;
+  max-width: 300px;
+  background-color: #343a40;
+  color: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  transform: scale(1.05);
+}
+
+.project-card img {
+  height: 180px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.project-card .card-body {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.project-card .btn {
+  margin-top: auto;
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 768px) {
+  .project-card {
+    flex: 0 0 80vw;
+    min-width: 80vw;
+    max-width: 80vw;
+  }
+
+  .project-card img {
+    height: 150px;
+  }
+}
+</style>
+
 <div class="skills-section">
   <h1 class="text-center mb-4">My Projects</h1>
   <div id="projectss-row">
-    {% for project in topprojs %}
-      <div class="project-card">
-        <img src="{{ project.image_url }}" alt="{{ project.title }}">
-        <div class="card-body">
-          <h5 class="card-title">{{ project.title }}</h5>
-          <p class="card-text">{{ project.tech_stack }}</p>
-          <a href="{{ project.visit_link }}" target="_blank" class="btn btn-outline-light">Visit Project</a>
-          <a class="nav-link mt-2" href="{% url 'project_detail' project.id %}">More Detailed</a>
+    <div class="scroll-content">
+      {% for project in topprojs %}
+        <div class="project-card">
+          <img src="{{ project.image_url }}" alt="{{ project.title }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ project.title }}</h5>
+            <p class="card-text">{{ project.tech_stack }}</p>
+            <a href="{{ project.visit_link }}" target="_blank" class="btn btn-outline-light">Visit Project</a>
+            <a class="nav-link mt-2" href="{% url 'project_detail' project.id %}">More Detailed</a>
+          </div>
         </div>
-      </div>
-    {% endfor %}
+      {% endfor %}
+
+      <!-- Duplicate cards for infinite scroll effect -->
+      {% for project in topprojs %}
+        <div class="project-card">
+          <img src="{{ project.image_url }}" alt="{{ project.title }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ project.title }}</h5>
+            <p class="card-text">{{ project.tech_stack }}</p>
+            <a href="{{ project.visit_link }}" target="_blank" class="btn btn-outline-light">Visit Project</a>
+            <a class="nav-link mt-2" href="{% url 'project_detail' project.id %}">More Detailed</a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
   </div>
 </div>
-
-
-
-<style>
-img {
-  max-height: 420px;
-  object-fit: cover;
-}
-</style>
 
 
 <style>
